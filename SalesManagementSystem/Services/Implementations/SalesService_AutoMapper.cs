@@ -35,8 +35,10 @@ namespace SalesManagementSystem.Services.Implementations
             // Add the new Sale entity to the in-memory sales collection
             _sales.Add(sale);
 
+            var saleDto = _mapper.Map<SaleDto>(sale);
+
             // Map the Sale entity back to a SaleDto for returning to the caller
-            return _mapper.Map<SaleDto>(sale);
+            return saleDto;
         }
 
         public SaleDto GetSaleById(int id)

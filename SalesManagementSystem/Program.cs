@@ -7,14 +7,14 @@ using SalesManagementSystem.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddScoped<ISalesService, SalesService_Manual>();
+builder.Services.AddScoped<ISalesService, SalesService_Manual>();
 
 // Register the AutoMapper profiles available in the assembly and bind the ISalesService to SalesService_AutoMapper
 builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddProfile<SaleMappingProfile>();
 });
-builder.Services.AddScoped<ISalesService, SalesService_AutoMapper>();
+//builder.Services.AddScoped<ISalesService, SalesService_AutoMapper>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

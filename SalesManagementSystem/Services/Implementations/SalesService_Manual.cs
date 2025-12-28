@@ -10,7 +10,7 @@ namespace SalesManagementSystem.Services.Implementations
         private static readonly List<Sale> _sales = new();
 
         // Counter to generate unique IDs for each sale
-        private static int _idCounter = 0;
+        private static int _idCounter = 1;
 
         public SaleDto CreateSale(CreateSaleDto dto)
         {
@@ -84,14 +84,14 @@ namespace SalesManagementSystem.Services.Implementations
             // If no sale is found, return a descriptive message.
             if (sale == null)
             {
-                return $"Sale with ID {id} not found.";
+                return $"Sale with ID '{id}' not found.";
             }
 
             // Remove the found sale from the in-memory list.
             _sales.Remove(sale);
 
             // Return a confirmation message indicating successful deletion.
-            return $"Sale with ID {id} has been deleted.";
+            return $"Sale with ID '{id}' has been deleted.";
         }
 
         #region Helpers
@@ -103,7 +103,7 @@ namespace SalesManagementSystem.Services.Implementations
                 Id = sale.Id,
                 ProductName = sale.ProductName,
                 Amount = sale.Amount,
-                SoldAt = sale.SoldAt
+                SoldAt = sale.SoldAt.ToString("ddd, MMM dd, hh:mm:ss tt")
             };
         }
         #endregion

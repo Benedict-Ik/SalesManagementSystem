@@ -8,7 +8,10 @@ namespace SalesManagementSystem.Mapping
     {
         public SaleMappingProfile()
         {
-            CreateMap<Sale, SaleDto>();
+            CreateMap<Sale, SaleDto>()
+                // Map the SoldAt property from DateTime to formatted string
+                .ForMember(dest => dest.SoldAt,
+               opt => opt.MapFrom(src => src.SoldAt.ToString("ddd, MMM dd, hh:mm:ss tt")));
             CreateMap<CreateSaleDto, Sale>();
         }
     }

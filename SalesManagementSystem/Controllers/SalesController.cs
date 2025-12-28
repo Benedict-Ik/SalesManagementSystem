@@ -46,8 +46,9 @@ namespace SalesManagementSystem.Controllers
         [HttpDelete("DeleteSalesById/{id}")]
         public IActionResult Delete(int id)
         {
-            _salesService.DeleteSale(id);
-            return NoContent();
+            var result = _salesService.DeleteSale(id);
+
+            return Ok(result);
         }
     }
 }
