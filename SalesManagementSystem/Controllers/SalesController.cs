@@ -36,7 +36,7 @@ namespace SalesManagementSystem.Controllers
             return Ok(result);
         }
 
-        [HttpPut("UpdateSalesById{id}")]
+        [HttpPut("UpdateSalesById/{id}")]
         public IActionResult Update(int id, CreateSaleDto dto)
         {
             var result = _salesService.UpdateSale(id, dto);
