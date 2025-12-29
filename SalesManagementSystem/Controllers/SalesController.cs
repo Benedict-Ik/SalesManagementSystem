@@ -26,6 +26,12 @@ namespace SalesManagementSystem.Controllers
         public IActionResult Get(int id)
         {
             var result = _salesService.GetSaleById(id);
+
+            if (result == null)
+            {
+                return NotFound(result);
+            }
+
             return Ok(result);
         }
 
@@ -40,6 +46,12 @@ namespace SalesManagementSystem.Controllers
         public IActionResult Update(int id, CreateSaleDto dto)
         {
             var result = _salesService.UpdateSale(id, dto);
+
+            if (result == null)
+            {
+                return NotFound(result);
+            }
+
             return Ok(result);
         }
 
@@ -47,6 +59,11 @@ namespace SalesManagementSystem.Controllers
         public IActionResult Delete(int id)
         {
             var result = _salesService.DeleteSale(id);
+
+            if (result == null)
+            {
+                return NotFound(result);
+            }
 
             return Ok(result);
         }

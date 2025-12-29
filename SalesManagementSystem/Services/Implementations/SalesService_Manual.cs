@@ -66,7 +66,7 @@ namespace SalesManagementSystem.Services.Implementations
 
             if(sale == null)
             {
-                return new SaleDto();
+                return null;
             }
 
             // Update the sale's properties with the new values provided in the DTO.
@@ -84,7 +84,8 @@ namespace SalesManagementSystem.Services.Implementations
             // If no sale is found, return a descriptive message.
             if (sale == null)
             {
-                return $"Sale with ID '{id}' not found.";
+                //return $"Sale with ID '{id}' not found.";
+                return null;
             }
 
             // Remove the found sale from the in-memory list.

@@ -46,6 +46,11 @@ namespace SalesManagementSystem.Services.Implementations
             // Find the first Sale in the _sales collection that matches the given Id
             var sale = _sales.FirstOrDefault(x => x.Id == id);
 
+            if (sale == null)
+            {
+                return null;
+            }
+
             var result = _mapper.Map<SaleDto>(sale);
 
             // Map the Sale entity to a SaleDto for returning to the caller
@@ -66,6 +71,11 @@ namespace SalesManagementSystem.Services.Implementations
             // Find the first Sale in the _sales collection that matches the given Id
             var sale = _sales.FirstOrDefault(x => x.Id == id);
 
+            if (sale == null)
+            {
+                return null;
+            }
+
             // Map the incoming CreateSaleDto onto the existing Sale entity
             // This updates the Sale's properties with values from the DTO
             _mapper.Map(dto, sale);
@@ -84,7 +94,8 @@ namespace SalesManagementSystem.Services.Implementations
             // If no sale is found, return a descriptive message.
             if (sale == null)
             {
-                return $"Sale with ID {id} not found.";
+                //return $"Sale with ID {id} not found.";
+                return null;
             }
 
             // Remove the found sale from the in-memory list.
